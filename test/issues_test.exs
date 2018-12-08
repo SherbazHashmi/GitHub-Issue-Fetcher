@@ -1,4 +1,5 @@
-defmodule IssuesTest do
+
++defmodule IssuesTest do
   use ExUnit.Case
   doctest Issues
 
