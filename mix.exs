@@ -4,6 +4,7 @@ defmodule Issues.MixProject do
   def project do
     [
       app: :issues,
+      escript: escript_config(),
       version: "0.1.0",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
@@ -22,9 +23,17 @@ defmodule Issues.MixProject do
   defp deps do
     [
       {:httpoison, "~> 1.0.0"},## HTTP Library
-      {:poison, "~> 3.1"} ## JSON Library
+      {:poison, "~> 3.1"}, ## JSON Library
+      {:ex_doc, "~> 0.19.1"}, ## Documentation Library
+      {:earmark, "~> 1.3"}, ## Elixir MD -> HTML Converter
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
+    ]
+  end
+
+  defp escript_config do
+    [
+      main_module: Issues.CLI
     ]
   end
 end

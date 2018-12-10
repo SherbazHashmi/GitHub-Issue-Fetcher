@@ -15,4 +15,24 @@ defmodule CliTest do
     test "count is defaulted if two values are given" do
         assert parse_args(["user","project"]) == {"user","project",4}
     end
+
+    @doc """
+    Testing Decending Sorting Functionality
+    Sorts a created list in decending order.
+    """
+    test "sort decending orders" do
+        result = sort_into_decending_order(fake_created_at_list(["c",
+        "a","b"]))
+        issues = for issue <- result, do: Map.get(issue,"created_at")
+        assert issues == ~w{ c b a }
+    end
+
+    @doc """
+    Helper Function for Sorting Test, formats the data into
+    correct map format(set of key value pairs).
+    """
+    defp fake_created_at_list(values) do
+        for value <- values,
+        do: %{"created_at" => value, "other_data" => "xxx"}
+    end
 end
